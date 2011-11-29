@@ -3580,11 +3580,6 @@ static VALUE
 f_sqrt(int count, VALUE **vals)
 {
 	VALUE tmp1, tmp2, result;
-  if (qreli(vals[0]->v_num,0)==(FLAG)-1)
-  {
-    printf("Not allowed the sqrt of negative number");
-    math_error("Not allowed the sqrt of negative number");
-  }
 
 	/* initialize VALUEs */
 	result.v_subtype = V_NOSUBTYPE;

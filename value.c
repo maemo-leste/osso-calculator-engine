@@ -1457,7 +1457,7 @@ conjvalue(VALUE *vp, VALUE *vres)
 void
 sqrtvalue(VALUE *v1, VALUE *v2, VALUE *v3, VALUE *vres)
 {
-	NUMBER *q, *tmp;
+	NUMBER *q;/*, *tmp;*/
 	COMPLEX *c;
 	long R;
 
@@ -1494,14 +1494,25 @@ sqrtvalue(VALUE *v1, VALUE *v2, VALUE *v3, VALUE *vres)
 			if (!qisneg(v1->v_num)) {
 				vres->v_num = qsqrt(v1->v_num, q, R);
 				return;
+			} else {
+				*vres = error_value(E_SQRT);
+                                /* an ugly legacy hack:
+                                 * this message will be processed by
+                                 * GUI (see ENGINE_ERROR_SQRT_NEGATIVE there)
+                                */
+				printf("Not allowed the sqrt of negative number");
+				math_error("Not allowed the sqrt of negative number");
+				return;
 			}
-			tmp = qneg(v1->v_num);
+/* osso calc engine returns the error message above instead of a complex number
+ * for square root of a negative value
+  			tmp = qneg(v1->v_num);
 			c = comalloc();
 			qfree(c->imag);
 			c->imag = qsqrt(tmp, q, R);
 			qfree(tmp);
 			vres->v_com = c;
-			vres->v_type = V_COM;
+			vres->v_type = V_COM;*/
 			break;
 		case V_COM:
 			vres->v_com = mycsqrt(v1->v_com, q, R);
@@ -1890,12 +1901,6 @@ powervalue(VALUE *v1, VALUE *v2, VALUE *v3, VALUE *vres)
   VALUE fracnum;
   
   
-  if (qreli(v2->v_num,MAXPOWER)==(FLAG)1)
-  {
-    printf("Raising to very large power\n");
-    math_error("Raising to very large power");
-  }
-
 	vres->v_subtype = V_NOSUBTYPE;
 	if (v1->v_type <= 0) {
 		vres->v_type = v1->v_type;
@@ -1914,6 +1919,13 @@ powervalue(VALUE *v1, VALUE *v2, VALUE *v3, VALUE *vres)
 		*vres = error_value(E_POWER3);
 		return;
 	}
+
+  if (qreli(v2->v_num,MAXPOWER)==(FLAG)1)
+  {
+    printf("Raising to very large power\n");
+    math_error("Raising to very large power");
+  }
+
   fracvalue(v2,&fracnum);
   if (testvalue(&fracnum)==FALSE)
   {//fractional is 0, we can use the old power func

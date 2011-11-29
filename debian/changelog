@@ -1,3 +1,16 @@
+osso-calculator-engine (1.5.08-0) unstable; urgency=low
+
+  * Fixes: NB#80176 Cores are generated with the expression sq.
+    root(01/x)^01/x=
+
+ -- Qureshi Ahmad <Ahmad.Qureshi@nokia.com>  Mon, 11 Feb 2008 16:30:27 +0100
+
+osso-calculator-engine (1.5.05-0) unstable; urgency=low
+
+  * Fixes: NB#79641 Calculator crashes with sq.root(2-2)^(2-2)1/x=
+
+ -- Qureshi Ahmad <Ahmad.Qureshi@nokia.com>  Tue, 22 Jan 2008 16:53:38 +0200
+
 osso-calculator-engine (1.4.34-0) unstable; urgency=low
 
   * added debug package
