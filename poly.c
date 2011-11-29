@@ -88,7 +88,12 @@ evalpoly(LIST *clist, LISTELEM *x, VALUE *vres)
 	if (x == NULL) {
 		v = cp->e_value;
 		if (v.v_type == V_LIST)
-			return evalpoly(v.v_list, x->e_next, vres);
+		{
+			// return evalpoly(v.v_list, x->e_next, vres);
+			// This evalpoly() is not used in the engine. 
+			//  CID: 2215 
+			return evalpoly(v.v_list, x, vres);
+		}
 		copyvalue(&v, vres);
 		return TRUE;
 	}

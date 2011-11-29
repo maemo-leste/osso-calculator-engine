@@ -778,7 +778,12 @@ runrcfiles(void)
 
 		/* load file name into the path */
 		if (calcrc == NULL) {
-			strcpy(path, cp);
+			//strcpy(path, cp);
+			if(sizeof (path[MAX_CALCRC+1+1]) >= sizeof(cp-1)) //CID 12530
+			{
+				strncpy(path, cp, sizeof(cp-1));
+				path[sizeof(cp)] = '\0';
+			}
 		} else {
 			strncpy(path, cp, calcrc - cp);
 			path[calcrc - cp] = '\0';

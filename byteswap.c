@@ -546,11 +546,13 @@ swap_HALF_in_ZVALUE(ZVALUE *dest, ZVALUE *src, BOOL all)
 		/*
 		 * copy storage because we are dealing with HALFs
 		 */
-		if (dest->v != NULL) {
+		if (dest->v) {
 			zfree(*dest);
 			dest->v = alloc(src->len);
 		}
-		zcopyval(*src, *dest);
+		/* CID: 1787 */
+		if(dest->v != NULL)
+			zcopyval(*src, *dest);
 	}
 
 	/*

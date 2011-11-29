@@ -440,8 +440,11 @@ initenv(void)
 			/* just assume . is home if all else fails */
 			home = ".";
 		}
-		home = (char *)malloc(strlen(ent->pw_dir)+1);
-		strcpy(home, ent->pw_dir);
+		/* CID: 2213 */	
+		if (ent != NULL) {
+			home = (char *)malloc(strlen(ent->pw_dir)+1);
+			strcpy(home, ent->pw_dir);
+		}
 	}
 #endif /* Windoz free systems */
 
@@ -662,14 +665,25 @@ find_tty_state(int fd)
 		return -1;
 	}
 	new_fd_setup[fd_setup_len] = -1;
+	/* CID: 5229 */
 	new_fd_orig = (ttystruct *)realloc(fd_setup, sizeof(fd_orig[0]) *
 					    (fd_setup_len+1));
 	if (new_fd_orig == NULL) {
+		
+		if (new_fd_setup != NULL) //Double check else covirity will complain 
+			free(new_fd_setup); 
+		
 		return -1;
 	}
 	new_fd_cur = (ttystruct *)realloc(fd_cur, sizeof(fd_cur[0]) *
 					  (fd_setup_len+1));
 	if (new_fd_cur == NULL) {
+		/* CID 5228*/
+		if (new_fd_setup != NULL) //Double check else covirity will complain 
+			free(new_fd_setup); 
+		if (new_fd_orig != NULL) //Double check else covirity will complain
+			free(new_fd_orig); 
+	
 		return -1;
 	}
 	fd_setup = new_fd_setup;

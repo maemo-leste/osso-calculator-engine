@@ -1,3 +1,34 @@
+osso-calculator-engine (1.6.31-2+0m5) unstable; urgency=low
+
+  * This entry has been added by BIFH queue processor
+    Suffix +0m5 added to package revision
+
+ -- Hunalli Mallikarjun Channappa <mallikarjun.hunalli@nokia.com>  Wed, 29 Jul 2009 15:01:49 +0300
+
+osso-calculator-engine (1.6.31-2) unstable; urgency=low
+                                                                                                                                                                  
+  * Fixes: Coverity fixes                                                                                                                                         
+                                                                                                                                                                  
+ -- Amish Maske <amish.maske@nokia.com>  Tue, 28 July 2009 13:20:00 +0530 
+
+osso-calculator-engine (1.6.28-1) unstable; urgency=low
+
+  * Some of the Coverity defects taken care 
+
+ -- Amish Maske <amish.maske@nokia.com>  Mon, 06 July 2009 12:10:00 +0530
+
+osso-calculator-engine (1.6.11-1) unstable; urgency=low
+
+  * Updated application maintainer name in control file
+
+ -- Sundaram Sandeep <sandeep.sundaram@nokia.com>  Wed, 11 Mar 2009 12:10:00 +0530
+
+osso-calculator-engine (1.5.40-1) unstable; urgency=low
+
+  * Modifications done for new 4.x tool chain
+
+ -- Sundaram Sandeep <sandeep.sundaram@nokia.com>  Mon, 29 Sep 2008 17:30:00 +0530
+
 osso-calculator-engine (1.5.08-0) unstable; urgency=low
 
   * Fixes: NB#80176 Cores are generated with the expression sq.

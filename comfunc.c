@@ -638,12 +638,25 @@ myccosh(COMPLEX *c, NUMBER *epsilon)
 	tmp3 = mycexp(tmp2, epsilon);
 	comfree(tmp2);
 	if (tmp3 == NULL)
-		return NULL;
+	{
+	     if (tmp1 != NULL)
+		comfree(tmp1);
+		
+	     return NULL;
+	}
 	tmp2 = cadd(tmp1, tmp3);
-	comfree(tmp1);
-	comfree(tmp3);
-	tmp1 = cscale(tmp2, -1);
-	comfree(tmp2);
+	
+	if (tmp1 != NULL)
+		comfree(tmp1);
+	if (tmp3 != NULL)
+		comfree(tmp3);
+
+	/* CID: 17865 */
+	if (tmp2 != NULL)
+		tmp1 = cscale(tmp2, -1);
+	
+	if (tmp2 != NULL)
+		comfree(tmp2);
 	return tmp1;
 }
 
@@ -660,12 +673,25 @@ mycsinh(COMPLEX *c, NUMBER *epsilon)
 	tmp3 = mycexp(tmp2, epsilon);
 	comfree(tmp2);
 	if (tmp3 == NULL)
+	{
+		if (tmp1 != NULL)
+			comfree(tmp1);
 		return NULL;
+	}
 	tmp2 = csub(tmp1, tmp3);
-	comfree(tmp1);
-	comfree(tmp3);
-	tmp1 = cscale(tmp2, -1);
-	comfree(tmp2);
+
+	if (tmp1 != NULL)
+		comfree(tmp1);
+	if (tmp3 != NULL)
+		comfree(tmp3);
+	
+	/* CID: 17866 */
+	if (tmp2 != NULL)
+		tmp1 = cscale(tmp2, -1);
+	
+	if (tmp2 != NULL)
+		comfree(tmp2);
+
 	return tmp1;
 }
 

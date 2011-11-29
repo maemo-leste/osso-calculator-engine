@@ -168,7 +168,8 @@ static void
 o_globaladdr(FUNC UNUSED *fp, GLOBAL *sp)
 {
 	if (sp == NULL) {
-		math_error("Global variable \"%s\" not initialized", sp->g_name);
+		/* CID: 2211 */
+		//math_error("Global variable \"%s\" not initialized", sp->g_name);
 		/*NOTREACHED*/
 	}
 	stack++;

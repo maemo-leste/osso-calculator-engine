@@ -1094,7 +1094,9 @@ getobjdeclaration(int symtype)
 					newindices = (int *) realloc(indices,
 						maxindices * sizeof(int));
 					if (newindices == NULL) {
-						free(indices);
+						if(indices != NULL)
+							free(indices);
+
 						scanerror(T_SEMICOLON, "Out of memory for indices realloc");
 						(void) tokenmode(oldmode);
 						return;
@@ -1950,6 +1952,7 @@ getreference(void)
 	switch(gettoken()) {
 		case T_ANDAND:
 			scanerror(T_NULL, "Non-variable operand for &");
+			break;
 		case T_AND:
 			type = getreference();
 			addop(OP_PTR);
@@ -2039,10 +2042,9 @@ getincdecexpr(void)
 static int
 getterm(void)
 {
-	int type;		/* type of term found */
+	int type = 0;		/* type of term found */
 	int oldmode;
 
-	type = 0;
 	switch (gettoken()) {
 		case T_NUMBER:
 			addopone(OP_NUMBER, tokennumber());
@@ -2131,11 +2133,14 @@ getterm(void)
 			break;
 
 		default:
+			/* CID: 1273 */
+			#if 0
 			if (iskeyword(type)) {
 				scanerror(T_NULL,
 				    "Expression contains reserved keyword");
 				break;
 			}
+			#endif			
 			rescantoken();
 			scanerror(T_COMMA, "Missing expression");
 	}
@@ -2641,6 +2646,7 @@ do_changedir(void)
 	}
 
 	/* change to that directory */
+	if(p != NULL)
 	if (chdir(p)) {
 		perror(p);
 	}

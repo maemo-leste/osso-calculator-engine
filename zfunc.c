@@ -1300,6 +1300,7 @@ zfacrem(ZVALUE z1, ZVALUE z2, ZVALUE *rem)
 			zfree(temp3);
 			break;
 		}
+		
 		zfree(temp3);
 		zfree(z1);
 		z1 = temp2;

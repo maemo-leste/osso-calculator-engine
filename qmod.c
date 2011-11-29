@@ -389,10 +389,14 @@ qfindredc(NUMBER *q)
 	 * then initialize it.
 	 */
 	rcp = bestrcp;
-	if (rcp->age) {
-		rcp->age = 0;
-		qfree(rcp->rnum);
-		zredcfree(rcp->redc);
+	/* CID: 2212*/
+	if(rcp != NULL)
+	{
+		if (rcp->age) {
+			rcp->age = 0;
+			qfree(rcp->rnum);
+			zredcfree(rcp->redc);
+		}
 	}
 
 	rcp->redc = zredcalloc(q->num);

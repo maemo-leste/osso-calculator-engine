@@ -788,9 +788,12 @@ listrandperm(LIST *lp)
 		i = irand(s--);
 		if (i < s) {
 			eq = listelement(lp, i);
-			val = eq->e_value;
-			eq->e_value = ep->e_value;
-			ep->e_value = val;
+			if (ep != NULL)
+			{
+				val = eq->e_value;
+				eq->e_value = ep->e_value;
+				ep->e_value = val;
+			}
 		}
 	}
 }

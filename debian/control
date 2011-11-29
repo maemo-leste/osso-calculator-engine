@@ -1,7 +1,7 @@
 Source: osso-calculator-engine
 Section: non-free/misc
 Priority: optional
-Maintainer: Ahmad Qureshi <ahmad.qureshi@nokia.com>
+Maintainer: Amish Maske <amish.maske@nokia.com>
 Build-Depends: debhelper (>= 4.0.0)
 Standards-Version: 3.6.0
 

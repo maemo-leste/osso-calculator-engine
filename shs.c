@@ -618,6 +618,10 @@ shs_final_state(HASH *state)
 #endif
 	ztrim(&ret);
 
+	/* CID: 6506 */
+	if (state != NULL) 
+		free(state);
+
 	/*
 	 * return ZVALUE
 	 */
