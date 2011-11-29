@@ -1848,8 +1848,15 @@ powivalue(VALUE *v1, VALUE *v2, VALUE *vres)
 		vres->v_type = v2->v_type;
 		return;
 	}
-	if (v2->v_type != V_NUM || qisfrac(v2->v_num)) {
+	if (v2->v_type != V_NUM) {
 		*vres = error_value(E_POWI2);
+		return;
+	}
+	if (qisfrac(v2->v_num)) {
+		VALUE e;
+		e.v_type = V_NUM;
+		e.v_num = str2q("1e-10");
+		powervalue(v1, v2, &e, vres);
 		return;
 	}
 	q = v2->v_num;
