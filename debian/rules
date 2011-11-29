@@ -1,13 +1,10 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Sample debian/rules that uses debhelper.
-# GNU copyright 1997 to 1999 by Joey Hess.
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-
-
+DEBDIR = ..
 
 CFLAGS = -Wall -g
 
@@ -17,15 +14,14 @@ else
 	CFLAGS += -O2
 endif
 
-
-# Use soft-float and thumb mode if it enabled. 
+# Use thumb mode if it enabled. 
 ifneq (,$(findstring thumb,$(DEB_BUILD_OPTIONS)))
 	CFLAGS += -mthumb
 endif
 
 ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-#	INSTALL_PROGRAM += -s
-	LDFLAGS += -s
+	INSTALL_PROGRAM += -s
+#	LDFLAGS += -s
 endif
 
 export CFLAGS LDFLAGS
@@ -45,7 +41,6 @@ build-stamp: configure-stamp
 
 	# Add here commands to compile the package.
 	$(MAKE)
-	#/usr/bin/docbook-to-man debian/osso-calculator-engine.sgml > osso-calculator-engine.1
 
 	touch build-stamp
 
@@ -65,7 +60,6 @@ install: build
 	dh_clean -k 
 	dh_installdirs -a
 
-	# Add here commands to install the package into debian/osso-calculator-engine.
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
 
 	dh_install --sourcedir=$(CURDIR)/debian/tmp
@@ -82,29 +76,16 @@ binary-arch: build install
 	dh_installchangelogs CHANGES
 	dh_installdocs
 	dh_installexamples
-#	dh_install
-#	dh_installmenu
-#	dh_installdebconf	
-#	dh_installlogrotate
-#	dh_installemacsen
-#	dh_installpam
-#	dh_installmime
-#	dh_installinit
-#	dh_installcron
-#	dh_installinfo
 	dh_installman
 	dh_link
-	dh_strip
+	dh_strip --dbg-package=osso-calculator-engine
 	dh_compress
 	dh_fixperms
-#	dh_perl
-#	dh_python
-#	dh_makeshlibs
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol
 	dh_md5sums
-	dh_builddeb
+	dh_builddeb --destdir=$(DEBDIR)
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install configure

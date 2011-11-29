@@ -1,7 +1,7 @@
 Source: osso-calculator-engine
 Section: non-free/misc
 Priority: optional
-Maintainer: Ouyang Qi <qi.ouyang@nokia.com>
+Maintainer: Ahmad Qureshi <ahmad.qureshi@nokia.com>
 Build-Depends: debhelper (>= 4.0.0)
 Standards-Version: 3.6.0
 
@@ -10,3 +10,11 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: OSSO Calculator Engine
  Calculator engine with most of the original functionalities.
+
+Package: osso-calculator-engine-dbg
+Architecture: any
+Section: devel
+Depends: osso-calculator-engine (= ${Source-Version})
+Description: osso-calculator-engine debug package
+ Debug symbols for osso-calculator-engine.
+
