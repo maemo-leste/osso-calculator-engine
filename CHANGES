@@ -1,0 +1,10 @@
+The following are the changes from calc version 2.11.10 to 
+osso_calculator_engine 0.1.01:
+
+	Most of the directories and some files were removed to
+	minimize amount of unneeded source code.
+
+osso_calculator_engine 0.2.03:
+
+	Removed man pages and win32 directory.
+	Set maximum power to 1000.
