@@ -1,3 +1,9 @@
+osso-calculator-engine (1.6.31-3+0cssu1) unstable; urgency=low
+
+  * Fixed bug 12514
+
+ -- Mohammad Abu-Garbeyyeh <mohammad7410@gmail.com>  Tue, 17 Jan 2012 20:32:43 +0200
+
 osso-calculator-engine (1.6.31-2+0m5) unstable; urgency=low
 
   * This entry has been added by BIFH queue processor
