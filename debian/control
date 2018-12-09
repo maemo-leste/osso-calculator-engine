@@ -14,7 +14,7 @@ Description: OSSO Calculator Engine
 Package: osso-calculator-engine-dbg
 Architecture: any
 Section: devel
-Depends: osso-calculator-engine (= ${Source-Version})
+Depends: osso-calculator-engine (= ${binary:Version})
 Description: osso-calculator-engine debug package
  Debug symbols for osso-calculator-engine.
 

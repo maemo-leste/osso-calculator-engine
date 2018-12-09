@@ -3260,7 +3260,7 @@ distlist: ${DISTLIST}
 #	(cd sample; ${MAKE} ${SAMPLE_PASSDOWN} $@)) | LANG=C ${SORT}
 
 distdir:
- ${Q}(echo .) | LANG=C ${SORT}
+	${Q}(echo .) | LANG=C ${SORT}
 #	${Q}(echo .; \
 #	echo win32; \
 #	(cd help; ${MAKE} ${HELP_PASSDOWN} $@); \

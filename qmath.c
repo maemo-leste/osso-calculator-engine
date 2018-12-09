@@ -1267,7 +1267,7 @@ qcmp(NUMBER *q1, NUMBER *q2)
 	if (q1 == q2)
 		return FALSE;
 	if ((q1->num.sign != q2->num.sign) || (q1->num.len != q2->num.len) ||
-		(q2->den.len != q2->den.len) || (*q1->num.v != *q2->num.v) ||
+		(q1->den.len != q2->den.len) || (*q1->num.v != *q2->num.v) ||
 		(*q1->den.v != *q2->den.v))
 			return TRUE;
 	if (zcmp(q1->num, q2->num))

@@ -1,3 +1,9 @@
+osso-calculator-engine (1.6.32) unstable; urgency=low
+
+  * port to leste
+
+ -- Ivaylo Dimitrov <ivo.g.dimitrov.75@gmail.com>  Sun, 09 Dec 2018 13:56:23 +0200
+
 osso-calculator-engine (1.6.31-3+0cssu1) unstable; urgency=low
 
   * Fixed bug 12514
