@@ -43,6 +43,7 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #if !defined(HAVE_NO_UID_T)
 #include "have_unistd.h"

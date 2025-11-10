@@ -37,6 +37,7 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "have_fpos.h"
 #include "have_posscl.h"
 

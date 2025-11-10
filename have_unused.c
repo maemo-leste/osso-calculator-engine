@@ -48,6 +48,7 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #if !defined(HAVE_NO_UNUSED)
 

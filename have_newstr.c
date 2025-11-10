@@ -46,6 +46,7 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define MOVELEN 3
 

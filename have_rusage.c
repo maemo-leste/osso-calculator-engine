@@ -44,6 +44,7 @@
 
 
 #include <sys/time.h>
+#include <stdlib.h>
 #include <sys/resource.h>
 
 int

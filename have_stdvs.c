@@ -44,6 +44,7 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "have_unistd.h"
 #if defined(HAVE_UNISTD_H)

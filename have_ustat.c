@@ -46,6 +46,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <ustat.h>
+#include <stdlib.h>
 
 int
 main(void)
