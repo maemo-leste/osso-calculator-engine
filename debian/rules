@@ -3,5 +3,5 @@
 	dh $@
 
 override_dh_install:
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
-	dh_install --sourcedir=$(CURDIR)/debian/tmp
+	rm -fv $(CURDIR)/debian/osso-calculator-engine/usr/lib/lib_osso_calculator_engine.a
+	dh_install
