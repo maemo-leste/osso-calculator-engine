@@ -1,3 +1,9 @@
+osso-calculator-engine (1.6.33) unstable; urgency=low
+
+  * Compilation fixes
+
+ -- Merlijn Wajer <merlijn@wizzup.org>  Thu, 27 Nov 2025 20:06:47 +0100
+
 osso-calculator-engine (1.6.32) unstable; urgency=low
 
   * port to leste
